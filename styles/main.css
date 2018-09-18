@@ -118,7 +118,7 @@ clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 .stream-cards {
   margin-top: 50px;
   display: flex;
-  flex-direction: "row";
+  flex-direction: row;
   flex-wrap: wrap;
   -webkit-align-items: center;
   align-items: center;
@@ -126,7 +126,26 @@ clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   justify-content: center;
 }
 
+.stream-card {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
 .stream-cover {
   position: relative;
-  margin: 20px;
+  margin: 10px 20px 0 20px;
+}
+
+.stream-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+}
+
+.stream-title {
+  word-break: break-all;
 }

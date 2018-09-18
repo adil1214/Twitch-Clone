@@ -39,7 +39,8 @@ class Streams extends Component {
 				this.props.dispatch(FetchSuccess(res.data.featured));
 			})
 			.catch((e) => {
-				console.log(e);
+				// console.log(e);
+				this.props.dispatch(FetchFailure(e));
 			});
 	}
 
@@ -52,6 +53,9 @@ class Streams extends Component {
 					key={str.stream._id}
 					streamCover={str.stream.preview.medium}
 					streamLink={str.stream.channel.url}
+					streamer={str.stream.channel.display_name}
+					streamTitle={str.stream.channel.status}
+					streamViewers={str.stream.viewers}
 				/>
 			);
 		});
