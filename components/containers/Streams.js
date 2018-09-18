@@ -5,6 +5,7 @@ import axios from 'axios';
 import { FetchFailure, FetchRequest, FetchSuccess } from '../../actions/Fetch';
 import Loader from '../presentationals/Loader';
 import StreamCard from '../presentationals/StreamCard';
+import Alert from '../presentationals/Alert';
 
 class Streams extends Component {
 	constructor(props) {
@@ -20,9 +21,6 @@ class Streams extends Component {
 	}
 
 	componentDidUpdate() {
-		// setTimeout(() => {
-		// 	this.forceUpdate();
-		// }, 3000);
 		console.log('hey, component updated!');
 	}
 
@@ -35,11 +33,9 @@ class Streams extends Component {
 				}
 			})
 			.then((res) => {
-				// console.log(res.data);
 				this.props.dispatch(FetchSuccess(res.data.featured));
 			})
 			.catch((e) => {
-				// console.log(e);
 				this.props.dispatch(FetchFailure(e));
 			});
 	}
@@ -47,7 +43,9 @@ class Streams extends Component {
 	render() {
 		const stateProps = this.props.state;
 		const status = stateProps.status;
+		const error = stateProps.error;
 		const streamCardItems = this.props.state.streams.map((str) => {
+			// get this into the component state later
 			return (
 				<StreamCard
 					key={str.stream._id}
@@ -59,12 +57,18 @@ class Streams extends Component {
 				/>
 			);
 		});
+
+		// i dont like this conditional rendering... maybe use hoc later?
 		return (
 			<div>
 				{status === 'loading' ? (
 					<Loader />
 				) : status === 'success' ? (
 					<div className="stream-cards">{streamCardItems}</div>
+				) : status === 'error' ? (
+					<div>
+						<Alert error={error} />
+					</div>
 				) : (
 					<div />
 				)}
