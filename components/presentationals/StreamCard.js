@@ -1,10 +1,9 @@
 import React from 'react';
 
-// 2 props: streamCover & streamLink
 export default ({ streamLink, streamCover, streamer, streamTitle, streamViewers }) => {
 	return (
 		<div className="stream-card">
-			<a href={streamLink}>
+			<a href={streamLink} target="_blank">
 				<img 
 					className="stream-cover" 
 					src={streamCover} 
