@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import logger from 'redux-logger';
+
 
 import { FetchFailure, FetchRequest, FetchSuccess } from './actions/Fetch';
 import TwitchApp from './reducers/TwitchApp';
@@ -19,16 +21,17 @@ class App extends Component {
 
 const store1 = createStore(
 	TwitchApp,
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // for redux-dev-tools
+	applyMiddleware(logger),
+	// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // for redux-dev-tools
 );
 
 // store1.dispatch(FetchRequest());
 // store1.dispatch(FetchSuccess([ 'a', 'b', 'c' ]));
 // store1.dispatch(FetchFailure('just an error'));
 
-const unsub = store1.subscribe(() => {
-	console.log(store1.getState());
-});
+// const unsub = store1.subscribe(() => {
+// 	console.log("store status: \n", store1.getState());
+// });
 
 const jsx = (
 	<Provider store={store1}>
