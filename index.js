@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 
 import { FetchFailure, FetchRequest, FetchSuccess } from './actions/Fetch';
@@ -21,8 +22,9 @@ class App extends Component {
 
 const store1 = createStore(
 	TwitchApp,
-	applyMiddleware(logger),
-	// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // for redux-dev-tools
+	composeWithDevTools(
+		applyMiddleware(logger)
+		),
 );
 
 // store1.dispatch(FetchRequest());
