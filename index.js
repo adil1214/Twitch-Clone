@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
 
 
 import { FetchFailure, FetchRequest, FetchSuccess } from './actions/Fetch';
@@ -23,7 +24,7 @@ class App extends Component {
 const store1 = createStore(
 	TwitchApp,
 	composeWithDevTools(
-		applyMiddleware(logger)
+		applyMiddleware(thunk, logger)
 		),
 );
 
