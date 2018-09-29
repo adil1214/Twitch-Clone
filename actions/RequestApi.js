@@ -4,6 +4,8 @@ import { FetchFailure, FetchRequest, FetchSuccess } from './Fetch';
 // RequestApi thunk
 export default () => {
 	return (dispatch) => {
+		dispatch(FetchRequest());
+		
 		axios
 			.get('https://api.twitch.tv/kraken/streams/featured', {
 				headers: {
@@ -17,7 +19,5 @@ export default () => {
 			.catch((e) => {
 				dispatch(FetchFailure(e));
       });
-
-    dispatch(FetchRequest());
 	};
 };

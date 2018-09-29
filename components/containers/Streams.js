@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import axios from 'axios';
 
-import { FetchFailure, FetchRequest, FetchSuccess } from '../../actions/Fetch';
-import RequestApi from '../../actions/RequestApi';
 import Loader from '../presentationals/Loader';
 import StreamCard from '../presentationals/StreamCard';
 import Alert from '../presentationals/Alert';
+import { FetchFailure, FetchRequest, FetchSuccess } from '../../actions/Fetch';
+import RequestApi from '../../actions/RequestApi';
 
 class Streams extends Component {
 	constructor(props) {
@@ -17,8 +16,6 @@ class Streams extends Component {
 	}
 
 	componentWillMount() {
-		// this.apiRequest(); 
-		// this.props.dispatch(FetchRequest());
 		this.props.dispatch(RequestApi());
 	}
 
@@ -26,28 +23,11 @@ class Streams extends Component {
 		console.log('hey, component updated!');
 	}
 
-	// apiRequest() {
-	// 	axios
-	// 		.get('https://api.twitch.tv/kraken/streams/featured', {
-	// 			headers: {
-	// 				Accept: 'application/vnd.twitchtv.v5+json',
-	// 				'Client-ID': '5oi8aqqszxnpa5w2oxn99zsyby1ld2 '
-	// 			}
-	// 		})
-	// 		.then((res) => {
-	// 			this.props.dispatch(FetchSuccess(res.data.featured));
-	// 		})
-	// 		.catch((e) => {
-	// 			this.props.dispatch(FetchFailure(e));
-	// 		});
-	// }
-
 	render() {
 		const stateProps = this.props.state;
 		const status = stateProps.status;
 		const error = stateProps.error;
 		const streamCardItems = this.props.state.streams.map((str) => {
-			// get this into the component state later
 			return (
 				<StreamCard
 					key={str.stream._id}
@@ -79,7 +59,7 @@ class Streams extends Component {
 	}
 }
 
-const mapStateToProps = (state) => {		// im exposing the whole state to Streams component.
+const mapStateToProps = (state) => {		//  im exposing the whole state to Streams component.
 	return { state };
 };
 

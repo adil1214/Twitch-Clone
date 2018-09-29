@@ -5,7 +5,7 @@
   "author": "ADIL",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server"
+    "dev-server": "webpack-dev-server"
   },
   "dependencies": {
     "axios": "^0.18.0",

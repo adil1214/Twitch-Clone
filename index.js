@@ -21,20 +21,13 @@ class App extends Component {
 	};
 }
 
+// TODO: move store to its own file later
 const store1 = createStore(
 	TwitchApp,
 	composeWithDevTools(
 		applyMiddleware(thunk, logger)
 		),
 );
-
-// store1.dispatch(FetchRequest());
-// store1.dispatch(FetchSuccess([ 'a', 'b', 'c' ]));
-// store1.dispatch(FetchFailure('just an error'));
-
-// const unsub = store1.subscribe(() => {
-// 	console.log("store status: \n", store1.getState());
-// });
 
 const jsx = (
 	<Provider store={store1}>
