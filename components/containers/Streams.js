@@ -4,15 +4,14 @@ import { connect } from 'react-redux';
 import Loader from '../presentationals/Loader';
 import StreamCard from '../presentationals/StreamCard';
 import Alert from '../presentationals/Alert';
-import { FetchFailure, FetchRequest, FetchSuccess } from '../../actions/Fetch';
 import RequestApi from '../../actions/RequestApi';
 
 class Streams extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			streamCardItems: []
-		};
+		// this.state = {
+		// 	streamCardItems: []
+		// };
 	}
 
 	componentWillMount() {

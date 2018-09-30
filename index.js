@@ -6,8 +6,6 @@ import logger from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
-
-import { FetchFailure, FetchRequest, FetchSuccess } from './actions/Fetch';
 import TwitchApp from './reducers/TwitchApp';
 import Streams from './components/containers/Streams';
 
@@ -22,6 +20,7 @@ class App extends Component {
 }
 
 // TODO: move store to its own file later
+// FIXME: the store and actions dispatched are exposed via redux-devtools and redux-logger!
 const store1 = createStore(
 	TwitchApp,
 	composeWithDevTools(

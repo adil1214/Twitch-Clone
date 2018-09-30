@@ -1,16 +1,17 @@
 import axios from 'axios';
 import { FetchFailure, FetchRequest, FetchSuccess } from './Fetch';
+import { keys } from '../config';
 
 // RequestApi thunk
 export default () => {
 	return (dispatch) => {
 		dispatch(FetchRequest());
-		
+
 		axios
 			.get('https://api.twitch.tv/kraken/streams/featured', {
 				headers: {
 					Accept: 'application/vnd.twitchtv.v5+json',
-					'Client-ID': '5oi8aqqszxnpa5w2oxn99zsyby1ld2 '
+					'Client-ID': keys.ClientID
 				}
 			})
 			.then((res) => {
@@ -18,6 +19,6 @@ export default () => {
 			})
 			.catch((e) => {
 				dispatch(FetchFailure(e));
-      });
+			});
 	};
 };
